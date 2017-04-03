@@ -1,9 +1,9 @@
 module Vue
   module Rails
     class Engine < ::Rails::Engine
-      config.assets.paths = [
-        File.expand_path("../../vendor/assets/javascripts/min", __FILE__)
-      ]
+      initializer :assets do |config|
+        config.assets.paths << root.join("vendor", "assets", "min", "javascripts")
+      end
     end
   end
 end
